@@ -1,18 +1,3 @@
-<!--
-Personal Finance & Expense Tracker - Single-file Frontend (HTML/CSS/JS)
-Contains a 5-page SPA: Dashboard, Transactions, Add Expense, Reports, Settings
-Features:
-- Responsive layout
-- LocalStorage persistence
-- Automatic category detection (simple keyword-based)
-- Transaction list with edit/delete
-- Summary cards and pie chart (Canvas)
-- Export CSV
-- Search & filter
-
-Usage: Save this file as `index.html` and open in a browser.
--->
-
 <!doctype html>
 <html lang="en">
 
@@ -48,8 +33,6 @@ Usage: Save this file as `index.html` and open in a browser.
             display: flex;
             min-height: 100vh
         }
-
-        /* Sidebar */
         .sidebar {
             width: 260px;
             padding: 24px;
@@ -104,8 +87,6 @@ Usage: Save this file as `index.html` and open in a browser.
             color: var(--muted);
             border: 1px solid rgba(255, 255, 255, 0.02)
         }
-
-        /* Cards */
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -129,8 +110,6 @@ Usage: Save this file as `index.html` and open in a browser.
             font-size: 22px;
             font-weight: 700
         }
-
-        /* Transactions */
         .table {
             width: 100%;
             border-collapse: collapse
@@ -160,8 +139,6 @@ Usage: Save this file as `index.html` and open in a browser.
             border: 1px solid rgba(255, 255, 255, 0.03);
             color: var(--muted)
         }
-
-        /* Form */
         .form-row {
             display: flex;
             gap: 12px
@@ -265,8 +242,6 @@ Usage: Save this file as `index.html` and open in a browser.
                     <button id="exportBtn" class="btn ghost">Export CSV</button>
                 </div>
             </div>
-
-            <!-- Pages -->
             <section id="dashboard" class="page">
                 <div class="grid">
                     <div class="card">
@@ -436,7 +411,6 @@ Usage: Save this file as `index.html` and open in a browser.
     </div>
 
     <script>
-        // ---------- Simple "AI" category suggester: keyword-based ----------
         const CATEGORY_KEYWORDS = {
             Food: ['dinner', 'lunch', 'breakfast', 'cafe', 'restaurant', 'uber eats', 'zomato', 'swiggy', 'meal', 'pizza', 'burger'],
             Rent: ['rent', 'flat', 'apartment', 'pg'],
@@ -447,8 +421,6 @@ Usage: Save this file as `index.html` and open in a browser.
             Bills: ['electric', 'water', 'bill', 'internet', 'broadband', 'phone'],
             Savings: ['save', 'savings', 'sip']
         };
-
-        // ---------- Utilities ----------
         const qs = sel => document.querySelector(sel);
         const qsa = sel => document.querySelectorAll(sel);
         const navButtons = qsa('.nav-btn');
@@ -458,8 +430,6 @@ Usage: Save this file as `index.html` and open in a browser.
         let settings = JSON.parse(localStorage.getItem('fts_settings') || '{}');
 
         function saveAll() { localStorage.setItem('txs', JSON.stringify(transactions)); localStorage.setItem('fts_settings', JSON.stringify(settings)); }
-
-        // ---------- Navigation ----------
         navButtons.forEach(btn => btn.addEventListener('click', e => {
             navButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -474,8 +444,6 @@ Usage: Save this file as `index.html` and open in a browser.
             if (name === 'reports') renderReports();
             if (name === 'add') { document.getElementById('txForm').reset(); }
         }
-
-        // ---------- Category detection ----------
         function detectCategory(title) {
             const t = title.toLowerCase();
             for (const [cat, keys] of Object.entries(CATEGORY_KEYWORDS)) {
@@ -483,8 +451,6 @@ Usage: Save this file as `index.html` and open in a browser.
             }
             return 'Other';
         }
-
-        // ---------- Add Transaction ----------
         const txForm = qs('#txForm');
         txForm.addEventListener('submit', e => {
             e.preventDefault();
@@ -501,8 +467,6 @@ Usage: Save this file as `index.html` and open in a browser.
             showPage('dashboard');
         });
         qs('#clearForm').addEventListener('click', () => txForm.reset());
-
-        // ---------- Render Dashboard ----------
         function renderDashboard() {
             const last30 = transactions.filter(tx => {
                 const days = (new Date() - new Date(tx.date)) / (1000 * 60 * 60 * 24);
@@ -524,8 +488,6 @@ Usage: Save this file as `index.html` and open in a browser.
 
             renderPieChart();
         }
-
-        // ---------- Pie Chart ----------
         function renderPieChart() {
             const canvas = qs('#pieChart'); const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height);
             const expenses = transactions.filter(t => t.type === 'expense');
@@ -533,7 +495,6 @@ Usage: Save this file as `index.html` and open in a browser.
             expenses.forEach(e => byCat[e.category] = (byCat[e.category] || 0) + e.amount);
             const entries = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
             const total = entries.reduce((s, e) => s + e[1], 0);
-            // draw simple pie
             let start = 0; let i = 0; const colors = ['#60a5fa', '#f472b6', '#f59e0b', '#34d399', '#a78bfa', '#fb7185', '#f97316', '#60a5fa'];
             entries.forEach(([cat, amt]) => {
                 const slice = (amt / total) * Math.PI * 2;
@@ -541,7 +502,6 @@ Usage: Save this file as `index.html` and open in a browser.
                 ctx.fillStyle = colors[i % colors.length]; ctx.fill();
                 start += slice; i++;
             });
-            // legend
             const list = qs('#catList'); list.innerHTML = '';
             entries.slice(0, 6).forEach(([cat, amt], idx) => {
                 const el = document.createElement('div'); el.className = 'small'; el.style.display = 'flex'; el.style.justifyContent = 'space-between'; el.style.marginTop = '6px';
@@ -550,8 +510,6 @@ Usage: Save this file as `index.html` and open in a browser.
             });
             if (entries.length === 0) { ctx.fillStyle = 'rgba(255,255,255,0.03)'; ctx.fillRect(0, 0, canvas.width, canvas.height); list.innerHTML = '<div class="muted small">No expense data yet</div>'; }
         }
-
-        // ---------- Transactions page ----------
         function renderTransactions() {
             const tbody = qs('#txTable tbody'); tbody.innerHTML = '';
             const filterCat = qs('#filterCategory').value;
@@ -562,7 +520,6 @@ Usage: Save this file as `index.html` and open in a browser.
                 tr.innerHTML = `<td>${tx.date}</td><td>${tx.title}</td><td>${tx.category}</td><td>${tx.type}</td><td>₹${tx.amount.toFixed(2)}</td><td><button class='btn ghost' data-id='${tx.id}' data-action='edit'>Edit</button> <button class='btn' data-id='${tx.id}' data-action='del' style='background:${'--'}'>Delete</button></td>`;
                 tbody.appendChild(tr);
             });
-            // actions
             tbody.querySelectorAll('button').forEach(b => b.addEventListener('click', e => {
                 const id = Number(b.dataset.id); const action = b.dataset.action;
                 if (action === 'del') { if (confirm('Delete transaction?')) { transactions = transactions.filter(t => t.id !== id); saveAll(); renderTransactions(); renderDashboard(); } }
@@ -573,15 +530,12 @@ Usage: Save this file as `index.html` and open in a browser.
                     }
                 }
             }));
-            // fill filter categories
             const catSel = qs('#filterCategory'); const cats = Array.from(new Set(transactions.map(t => t.category))).sort();
             catSel.innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option value="${c}">${c}</option>`).join('');
         }
 
         qs('#filterCategory').addEventListener('change', renderTransactions);
         qs('#filterType').addEventListener('change', renderTransactions);
-
-        // ---------- Reports ----------
         function renderReports() {
             const monthMap = {};
             transactions.forEach(t => {
@@ -598,12 +552,10 @@ Usage: Save this file as `index.html` and open in a browser.
             const top = Object.entries(byCat).sort((a, b) => b[1] - a[1]).slice(0, 6);
             qs('#topCats').innerHTML = top.map(t => `<div class='small' style='padding:6px 0'>${t[0]} — ₹${t[1].toFixed(2)}</div>`).join('') || '<div class="muted small">No expense data</div>';
         }
-
-        // ---------- Search & Export ----------
         qs('#globalSearch').addEventListener('input', e => {
             const q = e.target.value.toLowerCase();
             const filtered = transactions.filter(t => t.title.toLowerCase().includes(q) || t.category.toLowerCase().includes(q));
-            // temporarily show as recent
+
             const tbody = qs('#recentTable tbody'); tbody.innerHTML = '';
             filtered.slice(0, 8).forEach(tx => { const tr = document.createElement('tr'); tr.innerHTML = `<td>${tx.date}</td><td>${tx.title}</td><td><span class='category-tag'>${tx.category}</span></td><td>₹${tx.amount.toFixed(2)}</td>`; tbody.appendChild(tr); });
         });
@@ -616,7 +568,7 @@ Usage: Save this file as `index.html` and open in a browser.
             const a = document.createElement('a'); a.href = url; a.download = 'transactions.csv'; a.click(); URL.revokeObjectURL(url);
         });
 
-        // Reset data
+
         qs('#resetBtn').addEventListener('click', () => { if (confirm('Clear all data?')) { transactions = []; saveAll(); renderDashboard(); renderTransactions(); } });
         (function init() {
             if (!settings.startup) settings.startup = 'dashboard';
