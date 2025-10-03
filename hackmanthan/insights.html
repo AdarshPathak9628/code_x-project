@@ -175,17 +175,34 @@
             Entertainment: 4000,
             Others: 3000
         };
+
         const ctxTrends = document.getElementById('spendingTrendsChart').getContext('2d');
         const spendingTrendsChart = new Chart(ctxTrends, {
             type: 'line',
-            data: { labels: [], datasets: [{ label: 'Total Expenses', data: [], borderColor: '#007BFF', fill: false, tension: 0.3 }] },
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Total Expenses',
+                    data: [],
+                    borderColor: '#007BFF',
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
             options: { responsive: true, scales: { y: { beginAtZero: true } } }
         });
 
         const ctxCategory = document.getElementById('categoryBreakdownChart').getContext('2d');
         const categoryBreakdownChart = new Chart(ctxCategory, {
             type: 'pie',
-            data: { labels: ['Food', 'Travel', 'Utilities', 'Entertainment', 'Others'], datasets: [{ label: 'Expense Categories', data: [0, 0, 0, 0, 0], backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'] }] },
+            data: {
+                labels: ['Food', 'Travel', 'Utilities', 'Entertainment', 'Others'],
+                datasets: [{
+                    label: 'Expense Categories',
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+                }]
+            },
             options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
         });
 
@@ -208,47 +225,56 @@
         function updateInsights() {
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             const monthlyExpenses = Array(12).fill(0);
+
             transactions.forEach(t => {
                 if (t.type === 'expense') monthlyExpenses[new Date().getMonth()] += t.amount;
             });
+
             spendingTrendsChart.data.labels = months;
             spendingTrendsChart.data.datasets[0].data = monthlyExpenses;
             spendingTrendsChart.update();
+
             const categories = ['Food', 'Travel', 'Utilities', 'Entertainment', 'Others'];
-            const catData = categories.map(c => transactions.filter(t => t.category === c && t.type === 'expense').reduce((sum, t) => sum + t.amount, 0));
+            const catData = categories.map(c =>
+                transactions.filter(t => t.category === c && t.type === 'expense')
+                    .reduce((sum, t) => sum + t.amount, 0)
+            );
+
             categoryBreakdownChart.data.datasets[0].data = catData;
             categoryBreakdownChart.update();
+
             const alertsDiv = document.getElementById('alerts');
             alertsDiv.innerHTML = '';
             categories.forEach((cat, i) => {
                 if (catData[i] > budgetLimits[cat]) {
                     const alert = document.createElement('div');
                     alert.className = 'alert';
-                    alert.innerText = ⚠ Spending in ${cat} has exceeded your budget limit of ₹${budgetLimits[cat]}!;
+                    alert.innerText = `⚠ Spending in ${cat} has exceeded your budget limit of ₹${budgetLimits[cat]}!`;
                     alertsDiv.appendChild(alert);
                 }
             });
+
             const savingsList = document.getElementById('savingsSuggestions');
             savingsList.innerHTML = '';
             categories.forEach((cat, i) => {
                 if (catData[i] > 0.8 * budgetLimits[cat]) {
                     const li = document.createElement('li');
-                    li.innerText = Consider reducing ${cat} spending to save ₹${Math.round(catData[i] * 0.1)} this month.;
+                    li.innerText = `Consider reducing ${cat} spending to save ₹${Math.round(catData[i] * 0.1)} this month.`;
                     savingsList.appendChild(li);
                 }
             });
+
             const totalIncome = transactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
             const totalExpense = transactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
-            const healthUl = document.getElementById('financialHealth');
-            healthUl.innerHTML = '';
-            healthUl.innerHTML = `
-            <li>Total Income: ₹${totalIncome}</li>
-            <li>Total Expenses: ₹${totalExpense}</li>
-            <li>Balance: ₹${totalIncome - totalExpense}</li>
-            <li>Cash Flow: ${totalIncome - totalExpense >= 0 ? 'Positive' : 'Negative'}</li>
-        `;
-        }
 
+            const healthUl = document.getElementById('financialHealth');
+            healthUl.innerHTML = `
+                <li>Total Income: ₹${totalIncome}</li>
+                <li>Total Expenses: ₹${totalExpense}</li>
+                <li>Balance: ₹${totalIncome - totalExpense}</li>
+                <li>Cash Flow: ${totalIncome - totalExpense >= 0 ? 'Positive' : 'Negative'}</li>
+            `;
+        }
     </script>
 
 </body>

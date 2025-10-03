@@ -256,7 +256,6 @@ data = [
 df = pd.DataFrame(data)
 print(df)
 
-
 # 2. Categorization Dimensions
 
 # To enable analytics by category, you should classify transactions into:
