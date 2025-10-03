@@ -13,7 +13,7 @@ Features:
 Usage: Save this file as `index.html` and open in a browser.
 -->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -51,22 +51,18 @@ Usage: Save this file as `index.html` and open in a browser.
 				color: #e6eef6;
 			}
 
-			.app {
-				display: flex;
-				min-height: 100vh;
-			}
+        .app {
+            display: flex;
+            min-height: 100vh
+        }
 
-			/* Sidebar */
-			.sidebar {
-				width: 260px;
-				padding: 24px;
-				background: linear-gradient(
-					180deg,
-					rgba(255, 255, 255, 0.02),
-					transparent
-				);
-				border-right: 1px solid rgba(255, 255, 255, 0.03);
-			}
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            padding: 24px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+            border-right: 1px solid rgba(255, 255, 255, 0.03)
+        }
 
 			.brand {
 				font-weight: 700;
@@ -108,21 +104,19 @@ Usage: Save this file as `index.html` and open in a browser.
 				margin-bottom: 18px;
 			}
 
-			.search {
-				background: var(--glass);
-				padding: 8px 10px;
-				border-radius: 8px;
-				color: var(--muted);
-				border: 1px solid rgba(255, 255, 255, 0.02);
-			}
-
-			/* Cards */
-			.grid {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 16px;
-				margin-bottom: 18px;
-			}
+        .search {
+            background: var(--glass);
+            padding: 8px 10px;
+            border-radius: 8px;
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.02)
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 18px
+        }
 
 			.card {
 				background: var(--card);
@@ -136,16 +130,16 @@ Usage: Save this file as `index.html` and open in a browser.
 				font-size: 13px;
 			}
 
-			.big {
-				font-size: 22px;
-				font-weight: 700;
-			}
+        .big {
+            font-size: 22px;
+            font-weight: 700
+        }
 
-			/* Transactions */
-			.table {
-				width: 100%;
-				border-collapse: collapse;
-			}
+        /* Transactions */
+        .table {
+            width: 100%;
+            border-collapse: collapse
+        }
 
 			.table th,
 			.table td {
@@ -166,17 +160,17 @@ Usage: Save this file as `index.html` and open in a browser.
 				color: #001;
 			}
 
-			.btn.ghost {
-				background: transparent;
-				border: 1px solid rgba(255, 255, 255, 0.03);
-				color: var(--muted);
-			}
+        .btn.ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--muted)
+        }
 
-			/* Form */
-			.form-row {
-				display: flex;
-				gap: 12px;
-			}
+        /* Form */
+        .form-row {
+            display: flex;
+            gap: 12px
+        }
 
 			input,
 			select,
@@ -283,64 +277,37 @@ Usage: Save this file as `index.html` and open in a browser.
 				</div>
 			</aside>
 
-			<main class="main">
-				<div class="topbar">
-					<div>
-						<h2 style="margin: 0">Dashboard</h2>
-						<div class="small muted">
-							Overview of your finances
-						</div>
-					</div>
-					<div
-						style="
-							display: flex;
-							gap: 8px;
-							align-items: center;
-						"
-					>
-						<input
-							id="globalSearch"
-							class="search"
-							placeholder="Search transactions or categories..."
-						/>
-						<button id="exportBtn" class="btn ghost">
-							Export CSV
-						</button>
-                        <a class="nav-btn" data-page="insights" href="/hackmanthan/insights.html" >
-						Insights
-                        </a>
-					</div>
-				</div>
+        <main class="main">
+            <div class="topbar">
+                <div>
+                    <h2 style="margin:0">Dashboard</h2>
+                    <div class="small muted">Overview of your finances</div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center">
+                    <input id="globalSearch" class="search" placeholder="Search transactions or categories..." />
+                    <button id="exportBtn" class="btn ghost">Export CSV</button>
+                </div>
+            </div>
 
-				<!-- Pages -->
-				<section id="dashboard" class="page">
-					<div class="grid">
-						<div class="card">
-							<div class="muted">Balance</div>
-							<div class="big" id="balance">₹0</div>
-							<div class="muted small">
-								Income - Expenses
-							</div>
-						</div>
-						<div class="card">
-							<div class="muted">
-								Income (30 days)
-							</div>
-							<div class="big" id="income">₹0</div>
-							<div class="muted small">
-								Total received
-							</div>
-						</div>
-						<div class="card">
-							<div class="muted">
-								Expense (30 days)
-							</div>
-							<div class="big" id="expense">₹0</div>
-							<div class="muted small">
-								Total spent
-							</div>
-						</div>
-					</div>
+            <!-- Pages -->
+            <section id="dashboard" class="page">
+                <div class="grid">
+                    <div class="card">
+                        <div class="muted">Balance</div>
+                        <div class="big" id="balance">₹0</div>
+                        <div class="muted small">Income - Expenses</div>
+                    </div>
+                    <div class="card">
+                        <div class="muted">Income (30 days)</div>
+                        <div class="big" id="income">₹0</div>
+                        <div class="muted small">Total received</div>
+                    </div>
+                    <div class="card">
+                        <div class="muted">Expense (30 days)</div>
+                        <div class="big" id="expense">₹0</div>
+                        <div class="muted small">Total spent</div>
+                    </div>
+                </div>
 
 					<div
 						style="
@@ -642,68 +609,24 @@ Usage: Save this file as `index.html` and open in a browser.
 			</main>
 		</div>
 
-		<script>
-			// ---------- Simple "AI" category suggester: keyword-based ----------
-			const CATEGORY_KEYWORDS = {
-				Food: [
-					"dinner",
-					"lunch",
-					"breakfast",
-					"cafe",
-					"restaurant",
-					"uber eats",
-					"zomato",
-					"swiggy",
-					"meal",
-					"pizza",
-					"burger",
-				],
-				Rent: ["rent", "flat", "apartment", "pg"],
-				Salary: [
-					"salary",
-					"pay",
-					"ctc",
-					"payslip",
-					"salary credit",
-				],
-				Groceries: [
-					"grocery",
-					"supermarket",
-					"bigbasket",
-					"dmart",
-				],
-				Transport: [
-					"uber",
-					"ola",
-					"taxi",
-					"bus",
-					"train",
-					"metro",
-					"fuel",
-				],
-				Entertainment: [
-					"netflix",
-					"prime",
-					"movie",
-					"cinema",
-					"spotify",
-				],
-				Bills: [
-					"electric",
-					"water",
-					"bill",
-					"internet",
-					"broadband",
-					"phone",
-				],
-				Savings: ["save", "savings", "sip"],
-			};
+    <script>
+        // ---------- Simple "AI" category suggester: keyword-based ----------
+        const CATEGORY_KEYWORDS = {
+            Food: ['dinner', 'lunch', 'breakfast', 'cafe', 'restaurant', 'uber eats', 'zomato', 'swiggy', 'meal', 'pizza', 'burger'],
+            Rent: ['rent', 'flat', 'apartment', 'pg'],
+            Salary: ['salary', 'pay', 'ctc', 'payslip', 'salary credit'],
+            Groceries: ['grocery', 'supermarket', 'bigbasket', 'dmart'],
+            Transport: ['uber', 'ola', 'taxi', 'bus', 'train', 'metro', 'fuel'],
+            Entertainment: ['netflix', 'prime', 'movie', 'cinema', 'spotify'],
+            Bills: ['electric', 'water', 'bill', 'internet', 'broadband', 'phone'],
+            Savings: ['save', 'savings', 'sip']
+        };
 
-			// ---------- Utilities ----------
-			const qs = (sel) => document.querySelector(sel);
-			const qsa = (sel) => document.querySelectorAll(sel);
-			const navButtons = qsa(".nav-btn");
-			const pages = qsa(".page");
+        // ---------- Utilities ----------
+        const qs = sel => document.querySelector(sel);
+        const qsa = sel => document.querySelectorAll(sel);
+        const navButtons = qsa('.nav-btn');
+        const pages = qsa('.page');
 
 			let transactions = JSON.parse(
 				localStorage.getItem("txs") || "[]"
@@ -712,102 +635,63 @@ Usage: Save this file as `index.html` and open in a browser.
 				localStorage.getItem("fts_settings") || "{}"
 			);
 
-			function saveAll() {
-				localStorage.setItem(
-					"txs",
-					JSON.stringify(transactions)
-				);
-				localStorage.setItem(
-					"fts_settings",
-					JSON.stringify(settings)
-				);
-			}
+        function saveAll() { localStorage.setItem('txs', JSON.stringify(transactions)); localStorage.setItem('fts_settings', JSON.stringify(settings)); }
 
-			// ---------- Navigation ----------
-			navButtons.forEach((btn) =>
-				btn.addEventListener("click", (e) => {
-					navButtons.forEach((b) =>
-						b.classList.remove("active")
-					);
-					btn.classList.add("active");
-					const page = btn.dataset.page;
-					showPage(page);
-				})
-			);
+        // ---------- Navigation ----------
+        navButtons.forEach(btn => btn.addEventListener('click', e => {
+            navButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const page = btn.dataset.page;
+            showPage(page);
+        }));
 
-			function showPage(name) {
-				pages.forEach(
-					(p) =>
-						(p.style.display =
-							p.id === name ? "" : "none")
-				);
-				if (name === "dashboard") renderDashboard();
-				if (name === "transactions") renderTransactions();
-				if (name === "reports") renderReports();
-				if (name === "add") {
-					document.getElementById("txForm").reset();
-				}
-			}
+        function showPage(name) {
+            pages.forEach(p => p.style.display = p.id === name ? '' : 'none');
+            if (name === 'dashboard') renderDashboard();
+            if (name === 'transactions') renderTransactions();
+            if (name === 'reports') renderReports();
+            if (name === 'add') { document.getElementById('txForm').reset(); }
+        }
 
-			// ---------- Category detection ----------
-			function detectCategory(title) {
-				const t = title.toLowerCase();
-				for (const [cat, keys] of Object.entries(
-					CATEGORY_KEYWORDS
-				)) {
-					for (const k of keys)
-						if (t.includes(k)) return cat;
-				}
-				return "Other";
-			}
+        // ---------- Category detection ----------
+        function detectCategory(title) {
+            const t = title.toLowerCase();
+            for (const [cat, keys] of Object.entries(CATEGORY_KEYWORDS)) {
+                for (const k of keys) if (t.includes(k)) return cat;
+            }
+            return 'Other';
+        }
 
-			// ---------- Add Transaction ----------
-			const txForm = qs("#txForm");
-			txForm.addEventListener("submit", (e) => {
-				e.preventDefault();
-				const title = qs("#title").value.trim();
-				const date =
-					qs("#date").value ||
-					new Date().toISOString().slice(0, 10);
-				const amount = parseFloat(qs("#amount").value) || 0;
-				const type = qs("#type").value;
-				let category = qs("#category").value.trim();
-				if (!category) category = detectCategory(title);
-				const tx = {
-					id: Date.now(),
-					title,
-					date,
-					amount,
-					type,
-					category,
-				};
-				transactions.unshift(tx);
-				saveAll();
-				alert("Saved");
-				showPage("dashboard");
-			});
-			qs("#clearForm").addEventListener("click", () =>
-				txForm.reset()
-			);
+        // ---------- Add Transaction ----------
+        const txForm = qs('#txForm');
+        txForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const title = qs('#title').value.trim();
+            const date = qs('#date').value || new Date().toISOString().slice(0, 10);
+            const amount = parseFloat(qs('#amount').value) || 0;
+            const type = qs('#type').value;
+            let category = qs('#category').value.trim();
+            if (!category) category = detectCategory(title);
+            const tx = { id: Date.now(), title, date, amount, type, category };
+            transactions.unshift(tx);
+            saveAll();
+            alert('Saved');
+            showPage('dashboard');
+        });
+        qs('#clearForm').addEventListener('click', () => txForm.reset());
 
-			// ---------- Render Dashboard ----------
-			function renderDashboard() {
-				const last30 = transactions.filter((tx) => {
-					const days =
-						(new Date() - new Date(tx.date)) /
-						(1000 * 60 * 60 * 24);
-					return days <= 30;
-				});
-				const income = last30
-					.filter((t) => t.type === "income")
-					.reduce((s, t) => s + t.amount, 0);
-				const expense = last30
-					.filter((t) => t.type === "expense")
-					.reduce((s, t) => s + t.amount, 0);
-				const balance = income - expense;
-				qs("#income").textContent = "₹" + income.toFixed(2);
-				qs("#expense").textContent = "₹" + expense.toFixed(2);
-				qs("#balance").textContent = "₹" + balance.toFixed(2);
+        // ---------- Render Dashboard ----------
+        function renderDashboard() {
+            const last30 = transactions.filter(tx => {
+                const days = (new Date() - new Date(tx.date)) / (1000 * 60 * 60 * 24);
+                return days <= 30;
+            });
+            const income = last30.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
+            const expense = last30.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
+            const balance = income - expense;
+            qs('#income').textContent = '₹' + income.toFixed(2);
+            qs('#expense').textContent = '₹' + expense.toFixed(2);
+            qs('#balance').textContent = '₹' + balance.toFixed(2);
 
 				const tbody = qs("#recentTable tbody");
 				tbody.innerHTML = "";
@@ -823,241 +707,91 @@ Usage: Save this file as `index.html` and open in a browser.
 					tbody.appendChild(tr);
 				});
 
-				renderPieChart();
-			}
+            renderPieChart();
+        }
 
-			// ---------- Pie Chart ----------
-			function renderPieChart() {
-				const canvas = qs("#pieChart");
-				const ctx = canvas.getContext("2d");
-				ctx.clearRect(0, 0, canvas.width, canvas.height);
-				const expenses = transactions.filter(
-					(t) => t.type === "expense"
-				);
-				const byCat = {};
-				expenses.forEach(
-					(e) =>
-						(byCat[e.category] =
-							(byCat[e.category] || 0) + e.amount)
-				);
-				const entries = Object.entries(byCat).sort(
-					(a, b) => b[1] - a[1]
-				);
-				const total = entries.reduce((s, e) => s + e[1], 0);
-				// draw simple pie
-				let start = 0;
-				let i = 0;
-				const colors = [
-					"#60a5fa",
-					"#f472b6",
-					"#f59e0b",
-					"#34d399",
-					"#a78bfa",
-					"#fb7185",
-					"#f97316",
-					"#60a5fa",
-				];
-				entries.forEach(([cat, amt]) => {
-					const slice = (amt / total) * Math.PI * 2;
-					ctx.beginPath();
-					ctx.moveTo(130, 130);
-					ctx.arc(130, 130, 100, start, start + slice);
-					ctx.closePath();
-					ctx.fillStyle = colors[i % colors.length];
-					ctx.fill();
-					start += slice;
-					i++;
-				});
-				// legend
-				const list = qs("#catList");
-				list.innerHTML = "";
-				entries.slice(0, 6).forEach(([cat, amt], idx) => {
-					const el = document.createElement("div");
-					el.className = "small";
-					el.style.display = "flex";
-					el.style.justifyContent = "space-between";
-					el.style.marginTop = "6px";
-					el.innerHTML = `<div><span style="display:inline-block;width:12px;height:12px;background:${
-						colors[idx % colors.length]
-					};margin-right:8px;border-radius:3px"></span>${cat}</div><div>₹${amt.toFixed(
-						2
-					)}</div>`;
-					list.appendChild(el);
-				});
-				if (entries.length === 0) {
-					ctx.fillStyle = "rgba(255,255,255,0.03)";
-					ctx.fillRect(0, 0, canvas.width, canvas.height);
-					list.innerHTML =
-						'<div class="muted small">No expense data yet</div>';
-				}
-			}
+        // ---------- Pie Chart ----------
+        function renderPieChart() {
+            const canvas = qs('#pieChart'); const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const expenses = transactions.filter(t => t.type === 'expense');
+            const byCat = {};
+            expenses.forEach(e => byCat[e.category] = (byCat[e.category] || 0) + e.amount);
+            const entries = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
+            const total = entries.reduce((s, e) => s + e[1], 0);
+            // draw simple pie
+            let start = 0; let i = 0; const colors = ['#60a5fa', '#f472b6', '#f59e0b', '#34d399', '#a78bfa', '#fb7185', '#f97316', '#60a5fa'];
+            entries.forEach(([cat, amt]) => {
+                const slice = (amt / total) * Math.PI * 2;
+                ctx.beginPath(); ctx.moveTo(130, 130); ctx.arc(130, 130, 100, start, start + slice); ctx.closePath();
+                ctx.fillStyle = colors[i % colors.length]; ctx.fill();
+                start += slice; i++;
+            });
+            // legend
+            const list = qs('#catList'); list.innerHTML = '';
+            entries.slice(0, 6).forEach(([cat, amt], idx) => {
+                const el = document.createElement('div'); el.className = 'small'; el.style.display = 'flex'; el.style.justifyContent = 'space-between'; el.style.marginTop = '6px';
+                el.innerHTML = `<div><span style="display:inline-block;width:12px;height:12px;background:${colors[idx % colors.length]};margin-right:8px;border-radius:3px"></span>${cat}</div><div>₹${amt.toFixed(2)}</div>`;
+                list.appendChild(el);
+            });
+            if (entries.length === 0) { ctx.fillStyle = 'rgba(255,255,255,0.03)'; ctx.fillRect(0, 0, canvas.width, canvas.height); list.innerHTML = '<div class="muted small">No expense data yet</div>'; }
+        }
 
-			// ---------- Transactions page ----------
-			function renderTransactions() {
-				const tbody = qs("#txTable tbody");
-				tbody.innerHTML = "";
-				const filterCat = qs("#filterCategory").value;
-				const filterType = qs("#filterType").value;
-				const data = transactions.filter(
-					(t) =>
-						(filterCat
-							? t.category === filterCat
-							: true) &&
-						(filterType === "all"
-							? true
-							: t.type === filterType)
-				);
-				data.forEach((tx) => {
-					const tr = document.createElement("tr");
-					tr.innerHTML = `<td>${tx.date}</td><td>${
-						tx.title
-					}</td><td>${tx.category}</td><td>${
-						tx.type
-					}</td><td>₹${tx.amount.toFixed(
-						2
-					)}</td><td><button class='btn ghost' data-id='${
-						tx.id
-					}' data-action='edit'>Edit</button> <button class='btn' data-id='${
-						tx.id
-					}' data-action='del' style='background:${"--"}'>Delete</button></td>`;
-					tbody.appendChild(tr);
-				});
-				// actions
-				tbody.querySelectorAll("button").forEach((b) =>
-					b.addEventListener("click", (e) => {
-						const id = Number(b.dataset.id);
-						const action = b.dataset.action;
-						if (action === "del") {
-							if (confirm("Delete transaction?")) {
-								transactions =
-									transactions.filter(
-										(t) => t.id !== id
-									);
-								saveAll();
-								renderTransactions();
-								renderDashboard();
-							}
-						}
-						if (action === "edit") {
-							const tx = transactions.find(
-								(t) => t.id === id
-							);
-							if (tx) {
-								showPage("add");
-								qs("#title").value = tx.title;
-								qs("#date").value = tx.date;
-								qs("#amount").value = tx.amount;
-								qs("#type").value = tx.type;
-								qs("#category").value =
-									tx.category; // delete old
-								transactions =
-									transactions.filter(
-										(t) => t.id !== id
-									);
-								saveAll();
-							}
-						}
-					})
-				);
-				// fill filter categories
-				const catSel = qs("#filterCategory");
-				const cats = Array.from(
-					new Set(transactions.map((t) => t.category))
-				).sort();
-				catSel.innerHTML =
-					'<option value="">All categories</option>' +
-					cats
-						.map(
-							(c) =>
-								`<option value="${c}">${c}</option>`
-						)
-						.join("");
-			}
+        // ---------- Transactions page ----------
+        function renderTransactions() {
+            const tbody = qs('#txTable tbody'); tbody.innerHTML = '';
+            const filterCat = qs('#filterCategory').value;
+            const filterType = qs('#filterType').value;
+            const data = transactions.filter(t => (filterCat ? t.category === filterCat : true) && (filterType === 'all' ? true : t.type === filterType));
+            data.forEach(tx => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${tx.date}</td><td>${tx.title}</td><td>${tx.category}</td><td>${tx.type}</td><td>₹${tx.amount.toFixed(2)}</td><td><button class='btn ghost' data-id='${tx.id}' data-action='edit'>Edit</button> <button class='btn' data-id='${tx.id}' data-action='del' style='background:${'--'}'>Delete</button></td>`;
+                tbody.appendChild(tr);
+            });
+            // actions
+            tbody.querySelectorAll('button').forEach(b => b.addEventListener('click', e => {
+                const id = Number(b.dataset.id); const action = b.dataset.action;
+                if (action === 'del') { if (confirm('Delete transaction?')) { transactions = transactions.filter(t => t.id !== id); saveAll(); renderTransactions(); renderDashboard(); } }
+                if (action === 'edit') {
+                    const tx = transactions.find(t => t.id === id); if (tx) {
+                        showPage('add'); qs('#title').value = tx.title; qs('#date').value = tx.date; qs('#amount').value = tx.amount; qs('#type').value = tx.type; qs('#category').value = tx.category; // delete old
+                        transactions = transactions.filter(t => t.id !== id); saveAll();
+                    }
+                }
+            }));
+            // fill filter categories
+            const catSel = qs('#filterCategory'); const cats = Array.from(new Set(transactions.map(t => t.category))).sort();
+            catSel.innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
 
-			qs("#filterCategory").addEventListener(
-				"change",
-				renderTransactions
-			);
-			qs("#filterType").addEventListener(
-				"change",
-				renderTransactions
-			);
+        qs('#filterCategory').addEventListener('change', renderTransactions);
+        qs('#filterType').addEventListener('change', renderTransactions);
 
-			// ---------- Reports ----------
-			function renderReports() {
-				const monthMap = {};
-				transactions.forEach((t) => {
-					const m = t.date.slice(0, 7);
-					monthMap[m] = monthMap[m] || {
-						income: 0,
-						expense: 0,
-					};
-					if (t.type === "income")
-						monthMap[m].income += t.amount;
-					else monthMap[m].expense += t.amount;
-				});
-				const monthlyList = qs("#monthlyList");
-				monthlyList.innerHTML =
-					Object.keys(monthMap)
-						.sort()
-						.reverse()
-						.slice(0, 6)
-						.map((m) => {
-							const val = monthMap[m];
-							return `<div style="padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.02)"><strong>${m}</strong> — Income: ₹${val.income.toFixed(
-								2
-							)} | Expense: ₹${val.expense.toFixed(
-								2
-							)}</div>`;
-						})
-						.join("") ||
-					'<div class="muted small">No data</div>';
+        // ---------- Reports ----------
+        function renderReports() {
+            const monthMap = {};
+            transactions.forEach(t => {
+                const m = t.date.slice(0, 7);
+                monthMap[m] = monthMap[m] || { income: 0, expense: 0 };
+                if (t.type === 'income') monthMap[m].income += t.amount; else monthMap[m].expense += t.amount;
+            });
+            const monthlyList = qs('#monthlyList'); monthlyList.innerHTML = Object.keys(monthMap).sort().reverse().slice(0, 6).map(m => {
+                const val = monthMap[m]; return `<div style="padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.02)"><strong>${m}</strong> — Income: ₹${val.income.toFixed(2)} | Expense: ₹${val.expense.toFixed(2)}</div>`;
+            }).join('') || '<div class="muted small">No data</div>';
 
-				const byCat = {};
-				transactions
-					.filter((t) => t.type === "expense")
-					.forEach(
-						(t) =>
-							(byCat[t.category] =
-								(byCat[t.category] || 0) +
-								t.amount)
-					);
-				const top = Object.entries(byCat)
-					.sort((a, b) => b[1] - a[1])
-					.slice(0, 6);
-				qs("#topCats").innerHTML =
-					top
-						.map(
-							(t) =>
-								`<div class='small' style='padding:6px 0'>${
-									t[0]
-								} — ₹${t[1].toFixed(2)}</div>`
-						)
-						.join("") ||
-					'<div class="muted small">No expense data</div>';
-			}
+            const byCat = {};
+            transactions.filter(t => t.type === 'expense').forEach(t => byCat[t.category] = (byCat[t.category] || 0) + t.amount);
+            const top = Object.entries(byCat).sort((a, b) => b[1] - a[1]).slice(0, 6);
+            qs('#topCats').innerHTML = top.map(t => `<div class='small' style='padding:6px 0'>${t[0]} — ₹${t[1].toFixed(2)}</div>`).join('') || '<div class="muted small">No expense data</div>';
+        }
 
-			// ---------- Search & Export ----------
-			qs("#globalSearch").addEventListener("input", (e) => {
-				const q = e.target.value.toLowerCase();
-				const filtered = transactions.filter(
-					(t) =>
-						t.title.toLowerCase().includes(q) ||
-						t.category.toLowerCase().includes(q)
-				);
-				// temporarily show as recent
-				const tbody = qs("#recentTable tbody");
-				tbody.innerHTML = "";
-				filtered.slice(0, 8).forEach((tx) => {
-					const tr = document.createElement("tr");
-					tr.innerHTML = `<td>${tx.date}</td><td>${
-						tx.title
-					}</td><td><span class='category-tag'>${
-						tx.category
-					}</span></td><td>₹${tx.amount.toFixed(2)}</td>`;
-					tbody.appendChild(tr);
-				});
-			});
+        // ---------- Search & Export ----------
+        qs('#globalSearch').addEventListener('input', e => {
+            const q = e.target.value.toLowerCase();
+            const filtered = transactions.filter(t => t.title.toLowerCase().includes(q) || t.category.toLowerCase().includes(q));
+            // temporarily show as recent
+            const tbody = qs('#recentTable tbody'); tbody.innerHTML = '';
+            filtered.slice(0, 8).forEach(tx => { const tr = document.createElement('tr'); tr.innerHTML = `<td>${tx.date}</td><td>${tx.title}</td><td><span class='category-tag'>${tx.category}</span></td><td>₹${tx.amount.toFixed(2)}</td>`; tbody.appendChild(tr); });
+        });
 
 			qs("#exportBtn").addEventListener("click", () => {
 				if (transactions.length === 0) {
@@ -1085,54 +819,21 @@ Usage: Save this file as `index.html` and open in a browser.
 				URL.revokeObjectURL(url);
 			});
 
-			// Reset data
-			qs("#resetBtn").addEventListener("click", () => {
-				if (confirm("Clear all data?")) {
-					transactions = [];
-					saveAll();
-					renderDashboard();
-					renderTransactions();
-				}
-			});
-			(function init() {
-				if (!settings.startup) settings.startup = "dashboard";
-				if (transactions.length === 0) {
-					transactions = [
-						{
-							id: 1,
-							title: "Salary Credit",
-							date: new Date()
-								.toISOString()
-								.slice(0, 10),
-							amount: 50000,
-							type: "income",
-							category: "Salary",
-						},
-						{
-							id: 2,
-							title: "Grocery Store",
-							date: new Date()
-								.toISOString()
-								.slice(0, 10),
-							amount: 2300,
-							type: "expense",
-							category: "Groceries",
-						},
-						{
-							id: 3,
-							title: "Rent Payment",
-							date: new Date()
-								.toISOString()
-								.slice(0, 10),
-							amount: 12000,
-							type: "expense",
-							category: "Rent",
-						},
-					];
-					saveAll();
-				}
-				showPage(settings.startup || "dashboard");
-			})();
-		</script>
-	</body>
+        // Reset data
+        qs('#resetBtn').addEventListener('click', () => { if (confirm('Clear all data?')) { transactions = []; saveAll(); renderDashboard(); renderTransactions(); } });
+        (function init() {
+            if (!settings.startup) settings.startup = 'dashboard';
+            if (transactions.length === 0) {
+                transactions = [
+                    { id: 1, title: 'Salary Credit', date: new Date().toISOString().slice(0, 10), amount: 50000, type: 'income', category: 'Salary' },
+                    { id: 2, title: 'Grocery Store', date: new Date().toISOString().slice(0, 10), amount: 2300, type: 'expense', category: 'Groceries' },
+                    { id: 3, title: 'Rent Payment', date: new Date().toISOString().slice(0, 10), amount: 12000, type: 'expense', category: 'Rent' },
+                ];
+                saveAll();
+            }
+            showPage(settings.startup || 'dashboard');
+        })();
+    </script>
+</body>
+
 </html>
