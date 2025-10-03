@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            margin: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(185, 207, 255, 0.2), rgba(198, 215, 253, 0.2)), url("37.jpg");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .head {
+            display: flex;
+            background: rgb(0, 32, 57);
+            height: 50px;
+            align-items: center;
+        }
+
+        .head ul {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        .head li a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .head li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 0;
+            background: #ffcc00;
+            transition: 0.4s;
+        }
+
+        .head li a:hover::after {
+            width: 100%;
+        }
+
+        .content {
+            margin: 50px auto;
+            padding: 20px;
+            width: 350px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 5px;
+        }
+
+        .content input {
+            width: 95%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+        }
+
+        .gender {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .buttons button {
+            flex: 1;
+            padding: 10px;
+            background: rgb(0, 32, 57);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .buttons button:hover {
+            background: rgb(0, 49, 86);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="aboutpage.html">About Us</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <form>
+            <div class="content">
+                <div class="buttons">
+                    <button type="button">Sign Up</button>
+                    <button type="button" onclick="window.location.href='login.html'">Login</button>
+                </div>
+
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="password" placeholder="Password" required>
+                <input type="number" placeholder="Contact No." required>
+                <input type="text" placeholder="State" required>
+                <input type="text" placeholder="City" required>
+                <input type="date" placeholder="DOB" required>
+
+                <div class="gender">
+                    <label><input type="radio" name="gender"> Female</label>
+                    <label><input type="radio" name="gender"> Male</label>
+                    <label><input type="radio" name="gender"> Other</label>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" onclick="window.location.href='homepage.html'">Submit</button>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
